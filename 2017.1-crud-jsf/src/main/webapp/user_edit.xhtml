@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:metadata>
+	<f:viewParam name="user" value="#{userEdit.user}"
+		converter="userConverter" />
+	<f:event listener="#{userEdit.preRenderView()}" type="preRenderView" />
+</f:metadata>
+
+<h:head>
+	<title>User list</title>
+</h:head>
+
+<h:body>
+
+	<h:messages />
+
+	<h:form>
+
+		<h:panelGrid columns="2">
+			<f:facet name="header">User</f:facet>
+
+			<h:outputLabel value="Id" rendered="#{userEdit.edicaoDeUsuario}" />
+			<h:outputLabel value="#{userEdit.user.id}"
+				rendered="#{userEdit.edicaoDeUsuario}" />
+
+			<h:outputLabel for="firstName" value="First name" />
+			<h:inputText id="firstName" value="#{userEdit.user.firstName}"
+				label="First name" />
+
+			<h:outputLabel for="lastName" value="Last name" />
+			<h:inputText id="lastName" value="#{userEdit.user.lastName}"
+				label="Last name" />
+
+			<h:outputLabel for="birthDay" value="Birthday" />
+			<h:inputText id="birthDay" value="#{userEdit.user.birthday}"
+				label="Birthday">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:inputText>
+
+			<h:outputLabel for="email" value="Email" />
+			<h:inputText id="email" value="#{userEdit.user.email}" label="Email" />
+
+			<h:commandButton action="#{userEdit.saveUser}" value="Submit" />
+			<h:button outcome="index.xhtml" value="Cancel" />
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>

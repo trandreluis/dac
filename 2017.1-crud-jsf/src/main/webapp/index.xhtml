@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>User list</title>
+</h:head>
+
+
+<h:body>
+
+	<h:messages />
+
+	<a href="user_edit.xhtml">Add user</a>
+	
+	<h:form id="formFiltro">
+		<h:outputText value="Nome do Usuário: " />
+		<h:inputText id="itNomeFiltro" value="#{index.firstNameFiltro}"
+			style="width:350px" />
+
+		<h:commandButton id="btnFiltrarBotao" value="Filtrar"
+			action="#{index.filtrar}" update=":dataTableUsuarios" />
+		<h:commandButton id="btnLimparBotao" value="Limpar"
+			action="#{index.limpar}" update="formFiltro" process="@this">
+		</h:commandButton>
+
+	</h:form>
+
+	<h:dataTable border="1" var="user" value="#{index.users}">
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{user.id}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">First name</f:facet>
+			<h:outputText value="#{user.firstName}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Last name</f:facet>
+			<h:outputText value="#{user.lastName}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Email</f:facet>
+			<h:outputText value="#{user.email}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Birthday</f:facet>
+			<h:outputText value="#{user.birthday}">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Edit</f:facet>
+			<h:link outcome="user_edit.xhtml" value="Edit user">
+				<f:param name="user" value="#{user.id}" />
+			</h:link>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Delete</f:facet>
+			<h:link outcome="user_delete.xhtml" value="Delete user">
+				<f:param name="user" value="#{user.id}" />
+			</h:link>
+		</h:column>
+	</h:dataTable>
+
+</h:body>
+</html>
