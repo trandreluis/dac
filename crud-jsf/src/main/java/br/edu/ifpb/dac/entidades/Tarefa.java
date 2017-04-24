@@ -4,11 +4,15 @@ import java.util.Date;
 
 public class Tarefa {
 
-	private long id;
+	private Long id;
 	private String titulo;
 	private String descricao;
 	private Date dataPrevista;
 	private Date dataRealizada;
+	
+	public Tarefa() {
+		
+	}
 	
 	public String getTitulo() {
 		return titulo;
@@ -34,11 +38,15 @@ public class Tarefa {
 	public void setDataRealizada(Date dataRealizada) {
 		this.dataRealizada = dataRealizada;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String toString() {
+		return "ESTA É UMA TAREFA";
 	}
 	
 }

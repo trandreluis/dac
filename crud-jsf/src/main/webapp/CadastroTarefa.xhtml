@@ -6,9 +6,8 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <f:metadata>
-	<f:viewParam name="user" value="#{userEdit.user}"
-		converter="userConverter" />
-	<f:event listener="#{userEdit.preRenderView()}" type="preRenderView" />
+	<f:event listener="#{cadastroTarefaBean.preRenderizacao()}"
+		type="preRenderView" />
 </f:metadata>
 
 <h:head>
@@ -18,28 +17,38 @@
 <h:body>
 
 	<h:form>
-		<h:outputLabel style="display: block; text-align: center; font-size: 30px;"
+		<h:outputLabel
+			style="display: block; text-align: center; font-size: 30px;"
 			value="Cadastrar Tarefa" />
-		<br/>
- 		
-		<h:panelGrid columns="2" style="margin: 0 auto; background-color: #4682B4;">
-		
+		<br />
+
+		<h:panelGrid columns="2"
+			style="margin: 0 auto; background-color: #4682B4;">
+
 			<h:outputLabel value="Título" for="campoTarefa" />
-			<h:inputText id="campoTarefa" value="#{cadastroTarefaBean.tarefa.titulo}" />
-		
+			<h:inputText id="campoTarefa"
+				value="#{cadastroTarefaBean.tarefa.titulo}" />
+
 			<h:outputLabel value="Descrição" for="campoDescricao" />
-			<h:inputText id="campoDescricao" value="#{cadastroTarefaBean.tarefa.descricao}" />
-			
+			<h:inputText id="campoDescricao"
+				value="#{cadastroTarefaBean.tarefa.descricao}" />
+
 			<h:outputLabel value="Data Prevista" for="campoDataPrevista" />
-			<h:inputText id="campoDataPrevista" value="#{cadastroTarefaBean.tarefa.dataPrevista}" />
-			
+			<h:inputText id="campoDataPrevista"
+				value="#{cadastroTarefaBean.tarefa.dataPrevista}">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:inputText>
+
 			<h:outputLabel value="Data Realizada" for="campoDataRealizada" />
-			<h:inputText id="campoDataRealizada" value="#{cadastroTarefaBean.tarefa.dataRealizada}" />
+			<h:inputText id="campoDataRealizada"
+				value="#{cadastroTarefaBean.tarefa.dataRealizada}" >
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:inputText>
 			
-			<h:commandButton value="Cadastrar" />
-		
+			<h:commandButton value="Cadastrar" action="#{cadastroTarefaBean.cadastrar}" />
+
 		</h:panelGrid>
-		
+
 	</h:form>
 
 </h:body>
