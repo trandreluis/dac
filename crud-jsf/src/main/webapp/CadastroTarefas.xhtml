@@ -15,10 +15,10 @@
 		<h:outputLabel style="display: block; text-align: center; font-size: 30px;"
 			value="Bem vindo!" />
 		<br/>
-		
- 		<h:inputText value="#{paginaInicialBean.nome}" />
- 		<br/>
- 		<h:outputText value="#{paginaInicialBean.nome}" />
+ 		
+ 		<h:dataTable value="#{cadastroTarefaBean.tarefas}" var="t" border="2">	
+			
+		</h:dataTable>		
  
 	</h:form>
 
