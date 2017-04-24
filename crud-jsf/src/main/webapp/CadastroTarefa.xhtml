@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+	<f:viewParam name="user" value="#{userEdit.user}"
+		converter="userConverter" />
+	<f:event listener="#{userEdit.preRenderView()}" type="preRenderView" />
+</f:metadata>
+
+<h:head>
+	<title>Cadastro de Tarefas</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<h:outputLabel style="display: block; text-align: center; font-size: 30px;"
+			value="Cadastrar Tarefa" />
+		<br/>
+ 		
+		<h:panelGrid columns="2" style="margin: 0 auto; background-color: #4682B4;">
+		
+			<h:outputLabel value="Título" for="campoTarefa" />
+			<h:inputText id="campoTarefa" value="#{cadastroTarefaBean.tarefa.titulo}" />
+		
+			<h:outputLabel value="Descrição" for="campoDescricao" />
+			<h:inputText id="campoDescricao" value="#{cadastroTarefaBean.tarefa.descricao}" />
+			
+			<h:outputLabel value="Data Prevista" for="campoDataPrevista" />
+			<h:inputText id="campoDataPrevista" value="#{cadastroTarefaBean.tarefa.dataPrevista}" />
+			
+			<h:outputLabel value="Data Realizada" for="campoDataRealizada" />
+			<h:inputText id="campoDataRealizada" value="#{cadastroTarefaBean.tarefa.dataRealizada}" />
+			
+			<h:commandButton value="Cadastrar" />
+		
+		</h:panelGrid>
+		
+	</h:form>
+
+</h:body>
+
+</html>

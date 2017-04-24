@@ -11,7 +11,13 @@ public class CadastroTarefaBean {
 
 	private ArrayList<Tarefa> tarefas;
 
+	private Tarefa tarefa;
 	
+	public void preRenderizacao() {
+		if(this.getTarefa() == null) {
+			this.tarefa = new Tarefa();
+		}
+	}
 	
 	public ArrayList<Tarefa> getTarefas() {
 		return tarefas;
@@ -19,6 +25,14 @@ public class CadastroTarefaBean {
 
 	public void setTarefas(ArrayList<Tarefa> tarefas) {
 		this.tarefas = tarefas;
+	}
+
+	public Tarefa getTarefa() {
+		return tarefa;
+	}
+
+	public void setTarefa(Tarefa tarefa) {
+		this.tarefa = tarefa;
 	}
 	
 }

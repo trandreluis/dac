@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Tarefa {
 
+	private long id;
 	private String titulo;
 	private String descricao;
 	private Date dataPrevista;
@@ -32,6 +33,12 @@ public class Tarefa {
 	}
 	public void setDataRealizada(Date dataRealizada) {
 		this.dataRealizada = dataRealizada;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 }

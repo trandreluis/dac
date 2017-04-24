@@ -27,7 +27,7 @@
   </filter-mapping>
   
   <welcome-file-list>
-  	<welcome-file>CadastroTarefas.xhtml</welcome-file>
+  	<welcome-file>CadastroTarefa.xhtml</welcome-file>
   </welcome-file-list>
   
 </web-app>
