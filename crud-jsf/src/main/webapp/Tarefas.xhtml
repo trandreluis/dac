@@ -12,7 +12,54 @@
 <h:body>
 
 	<h:form>
-		<h:outputLabel value="jojofjofjofjfojfojo" ></h:outputLabel>
+
+		<h:outputLabel
+			style="display: block; text-align: center; font-size: 30px;"
+			value="Tarefas" />
+		<br />
+
+		<h:dataTable value="#{tarefasBean.listar()}" var="tarefa" border="2"
+			style="margin: 0 auto; background-color: #4682B4;">
+
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{tarefa.id}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Título</f:facet>
+				<h:outputText value="#{tarefa.titulo}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Descrição</f:facet>
+				<h:outputText value="#{tarefa.descricao}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Data prevista</f:facet>
+				<h:outputText value="#{tarefa.dataPrevista}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Data Realizada</f:facet>
+				<h:outputText value="#{tarefa.dataRealizada}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<h:button value="Editar" />
+			</h:column>
+
+			<h:column>
+				<h:button value="Deletar" />
+			</h:column>
+
+		</h:dataTable>
+
 	</h:form>
 
 </h:body>

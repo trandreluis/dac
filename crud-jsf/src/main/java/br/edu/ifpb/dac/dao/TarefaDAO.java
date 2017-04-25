@@ -1,4 +1,4 @@
-package br.edu.ifpb.dac.beans;
+package br.edu.ifpb.dac.dao;
 
 import java.util.ArrayList;
 
@@ -8,11 +8,12 @@ public class TarefaDAO {
 
 	private static ArrayList<Tarefa> tarefasCadatsradas = new ArrayList<>();
 	
-	public static void salvar(Tarefa tarefa) {
+	public void salvar(Tarefa tarefa) {
+		tarefa.setId(tarefasCadatsradas.size()+1);
 		tarefasCadatsradas.add(tarefa);
 	}
 	
-	public static ArrayList<Tarefa> listar() {
+	public ArrayList<Tarefa> listar() {
 		return tarefasCadatsradas;
 	}
 	
