@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title>Tarefas</title>
@@ -13,74 +14,76 @@
 
 	<h:form>
 
-		<h:outputLabel
+		<p:outputLabel
 			style="display: block; text-align: center; font-size: 30px;"
 			value="Tarefas" />
 		<br />
 
 		<div align="center">
-			<h:button value="Cadastrar tarefa"
+			<p:button value="Cadastrar tarefa"
 				outcome="CadastroTarefa?faces-redirect=true" />
 
 		</div>
 
 		<br />
-		
-		<h:panelGrid columns="4" style="margin: 0 auto;">
 
-			<h:outputLabel value="Titulo" for="tituloTarefa" />
-			<h:inputText id="tituloTarefa" value="#{tarefasBean.tituloBuscado}" />
-			<h:commandButton value="Buscar" action="#{tarefasBean.buscar}" />
+		<p:panelGrid columns="4" style="margin: 0 auto;">
 
-		</h:panelGrid>
+			<p:outputLabel value="Titulo" for="tituloTarefa" />
+			<p:inputText id="tituloTarefa" value="#{tarefasBean.tituloBuscado}" />
+			<p:commandButton value="Buscar" action="#{tarefasBean.buscar}"
+				ajax="false" />
+
+		</p:panelGrid>
 
 		<br />
 
-		<h:dataTable value="#{tarefasBean.tarefas}" var="tarefa" border="2"
-			style="margin: 0 auto; background-color: #4682B4;">
+		<p:dataTable value="#{tarefasBean.tarefas}" var="tarefa"
+			emptyMessage="Nenhuma tarefa encontrada.">
 
-			<h:column>
+			<p:column>
 				<f:facet name="header">ID</f:facet>
-				<h:outputText value="#{tarefa.id}" />
-			</h:column>
+				<p:outputLabel value="#{tarefa.id}" />
+			</p:column>
 
-			<h:column>
+			<p:column>
 				<f:facet name="header">Título</f:facet>
-				<h:outputText value="#{tarefa.titulo}" />
-			</h:column>
+				<p:outputLabel value="#{tarefa.titulo}" />
+			</p:column>
 
-			<h:column>
+			<p:column>
 				<f:facet name="header">Descrição</f:facet>
-				<h:outputText value="#{tarefa.descricao}" />
-			</h:column>
+				<p:outputLabel value="#{tarefa.descricao}" />
+			</p:column>
 
-			<h:column>
+			<p:column>
 				<f:facet name="header">Data prevista</f:facet>
-				<h:outputText value="#{tarefa.dataPrevista}">
-					<f:convertDateTime pattern="dd-MM-yyyy" />
-				</h:outputText>
-			</h:column>
+				<p:outputLabel value="#{tarefa.dataPrevista}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:outputLabel>
+			</p:column>
 
-			<h:column>
+			<p:column>
 				<f:facet name="header">Data Realizada</f:facet>
-				<h:outputText value="#{tarefa.dataRealizada}">
-					<f:convertDateTime pattern="dd-MM-yyyy" />
-				</h:outputText>
-			</h:column>
+				<p:outputLabel value="#{tarefa.dataRealizada}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:outputLabel>
+			</p:column>
 
-			<h:column>
-				<h:button value="Editar" outcome="CadastroTarefa?faces-redirect=true">
+			<p:column>
+				<p:button value="Editar"
+					outcome="CadastroTarefa?faces-redirect=true">
 					<f:param name="tarefa" value="#{tarefa.id}" />
-				</h:button>
-			</h:column>
+				</p:button>
+			</p:column>
 
-			<h:column>
-				<h:button value="Deletar" outcome="DeleteTarefa?faces-redirect=true">
+			<p:column>
+				<p:button value="Deletar" outcome="DeleteTarefa?faces-redirect=true">
 					<f:param name="tarefa" value="#{tarefa.id}" />
-				</h:button>
-			</h:column>
+				</p:button>
+			</p:column>
 
-		</h:dataTable>
+		</p:dataTable>
 
 	</h:form>
 

@@ -1,15 +1,17 @@
 package br.edu.ifpb.dac.dao;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import br.edu.ifpb.dac.entidades.Tarefa;
 
 public class TarefaDAO {
 
 	private static ArrayList<Tarefa> tarefasCadatsradas = new ArrayList<>();
+	private static AtomicInteger id = new AtomicInteger();
 	
 	public void salvar(Tarefa tarefa) {
-		tarefa.setId(tarefasCadatsradas.size()+1);
+		tarefa.setId(id.getAndIncrement());
 		tarefasCadatsradas.add(tarefa);
 	}
 	

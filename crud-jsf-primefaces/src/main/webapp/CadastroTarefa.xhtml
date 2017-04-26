@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
 	<f:viewParam name="tarefa" value="#{cadastroTarefaBean.tarefa}"
@@ -18,46 +19,44 @@
 
 <h:body>
 
-	<h:messages />
+	<p:messages />
 
 	<h:form>
-		<h:outputLabel
+		<p:outputLabel
 			style="display: block; text-align: center; font-size: 30px;"
 			value="Cadastrar Tarefa" />
 		<br />
 
-		<h:panelGrid columns="2"
-			style="margin: 0 auto; background-color: #4682B4;">
+		<p:panelGrid columns="2" columnClasses="label, value"
+			style="margin: 0 auto;">
 
-			<h:outputLabel value="Título*" for="campoTarefa" />
-			<h:inputText id="campoTarefa"
+			<p:outputLabel value="Título" for="campoTarefa" />
+			<p:inputText id="campoTarefa"
 				value="#{cadastroTarefaBean.tarefa.titulo}" required="true"
-				requiredMessage="Por favor, informe um nome." />
+				requiredMessage="Por favor, informe um título" />
 
-			<h:outputLabel value="Descrição*" for="campoDescricao" />
-			<h:inputTextarea id="campoDescricao"
+			<p:outputLabel value="Descrição" for="campoDescricao" />
+			<p:inputTextarea id="campoDescricao"
 				value="#{cadastroTarefaBean.tarefa.descricao}" required="true"
 				style="overflow:auto; resize:none"
 				requiredMessage="Por favor, informe uma descrição." />
 
-			<h:outputLabel value="Data Prevista" for="campoDataPrevista" />
-			<h:inputText id="campoDataPrevista"
+			<p:outputLabel value="Data Prevista" for="campoDataPrevista" />
+			<p:calendar id="campoDataPrevista"
 				value="#{cadastroTarefaBean.tarefa.dataPrevista}" size="10"
-				converterMessage="Por favor, informe uma data válida no seguinte formato: 29-04-2017">
-				<f:convertDateTime pattern="dd-MM-yyyy" />
-			</h:inputText>
+				converterMessage="Por favor, informe uma data válida no seguinte formato: 29/04/2017">
+			</p:calendar>
 
-			<h:outputLabel value="Data Realizada" for="campoDataRealizada" />
-			<h:inputText id="campoDataRealizada"
+			<p:outputLabel value="Data Realizada" for="campoDataRealizada" />
+			<p:calendar id="campoDataRealizada"
 				value="#{cadastroTarefaBean.tarefa.dataRealizada}" size="10"
-				converterMessage="Por favor, informe uma data válida no seguinte formato: 29-04-2017">
-				<f:convertDateTime pattern="dd-MM-yyyy" />
-			</h:inputText>
+				converterMessage="Por favor, informe uma data válida no seguinte formato: 29/04/2017">
+			</p:calendar>
 
-			<h:commandButton value="Cadastrar"
-				action="#{cadastroTarefaBean.cadastrar()}" />
+			<p:commandButton value="Cadastrar"
+				action="#{cadastroTarefaBean.cadastrar}" ajax="false" />
 
-		</h:panelGrid>
+		</p:panelGrid>
 
 	</h:form>
 
