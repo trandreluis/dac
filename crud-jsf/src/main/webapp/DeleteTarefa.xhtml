@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
+	
 <f:metadata>
 	<f:viewParam name="tarefa" value="#{tarefaDelete.tarefa}"
 		converter="tarefaConverter" />
@@ -31,7 +32,7 @@
 				<h:commandButton value="Não" action="#{tarefaDelete.cancelar}" />
 			</h:panelGrid>
 		</div>
-
+		
 	</h:form>
 
 </h:body>
