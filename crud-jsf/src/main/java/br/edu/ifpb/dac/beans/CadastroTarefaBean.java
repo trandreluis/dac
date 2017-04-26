@@ -10,9 +10,9 @@ import br.edu.ifpb.dac.entidades.Tarefa;
 @ViewScoped
 public class CadastroTarefaBean {
 	
-	private TarefaDAO daoTarefa = new TarefaDAO();
-	
 	private Tarefa tarefa;
+	
+	private TarefaDAO daoTarefa = new TarefaDAO();
 
 	public void preRenderizacao() {
 		if(this.tarefa == null) {
@@ -21,7 +21,11 @@ public class CadastroTarefaBean {
 	}
 	
 	public String cadastrar() {
-		daoTarefa.salvar(tarefa);
+		if(this.tarefa.getId() == null) {
+			daoTarefa.salvar(this.tarefa);			
+		} else {
+			daoTarefa.atualizar(this.tarefa);
+		}
 		return "Tarefas?faces-redirect=true";
 	}
 	

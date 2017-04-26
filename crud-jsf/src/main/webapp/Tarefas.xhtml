@@ -18,7 +18,25 @@
 			value="Tarefas" />
 		<br />
 
-		<h:dataTable value="#{tarefasBean.listar()}" var="tarefa" border="2"
+		<div align="center">
+			<h:button value="Cadastrar tarefa"
+				outcome="CadastroTarefa?faces-redirect=true" />
+
+		</div>
+
+		<br />
+		
+		<h:panelGrid columns="4" style="margin: 0 auto;">
+
+			<h:outputLabel value="Titulo" for="tituloTarefa" />
+			<h:inputText id="tituloTarefa" value="#{tarefasBean.tituloBuscado}" />
+			<h:commandButton value="Buscar" action="#{tarefasBean.buscar}" />
+
+		</h:panelGrid>
+
+		<br />
+
+		<h:dataTable value="#{tarefasBean.tarefas}" var="tarefa" border="2"
 			style="margin: 0 auto; background-color: #4682B4;">
 
 			<h:column>
@@ -51,11 +69,15 @@
 			</h:column>
 
 			<h:column>
-				<h:button value="Editar" />
+				<h:button value="Editar" outcome="CadastroTarefa?faces-redirect=true">
+					<f:param name="tarefa" value="#{tarefa.id}" />
+				</h:button>
 			</h:column>
 
 			<h:column>
-				<h:button value="Deletar" />
+				<h:button value="Deletar" outcome="DeleteTarefa?faces-redirect=true">
+					<f:param name="tarefa" value="#{tarefa.id}" />
+				</h:button>
 			</h:column>
 
 		</h:dataTable>

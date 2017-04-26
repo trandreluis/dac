@@ -6,6 +6,8 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <f:metadata>
+	<f:viewParam name="tarefa" value="#{cadastroTarefaBean.tarefa}"
+		converter="tarefaConverter" />
 	<f:event listener="#{cadastroTarefaBean.preRenderizacao()}"
 		type="preRenderView" />
 </f:metadata>
@@ -16,6 +18,8 @@
 
 <h:body>
 
+	<h:messages />
+
 	<h:form>
 		<h:outputLabel
 			style="display: block; text-align: center; font-size: 30px;"
@@ -25,27 +29,33 @@
 		<h:panelGrid columns="2"
 			style="margin: 0 auto; background-color: #4682B4;">
 
-			<h:outputLabel value="Título" for="campoTarefa" />
+			<h:outputLabel value="Título*" for="campoTarefa" />
 			<h:inputText id="campoTarefa"
-				value="#{cadastroTarefaBean.tarefa.titulo}" />
+				value="#{cadastroTarefaBean.tarefa.titulo}" required="true"
+				requiredMessage="Por favor, informe um nome." />
 
-			<h:outputLabel value="Descrição" for="campoDescricao" />
-			<h:inputText id="campoDescricao"
-				value="#{cadastroTarefaBean.tarefa.descricao}" />
+			<h:outputLabel value="Descrição*" for="campoDescricao" />
+			<h:inputTextarea id="campoDescricao"
+				value="#{cadastroTarefaBean.tarefa.descricao}" required="true"
+				style="overflow:auto; resize:none"
+				requiredMessage="Por favor, informe uma descrição." />
 
 			<h:outputLabel value="Data Prevista" for="campoDataPrevista" />
 			<h:inputText id="campoDataPrevista"
-				value="#{cadastroTarefaBean.tarefa.dataPrevista}">
+				value="#{cadastroTarefaBean.tarefa.dataPrevista}" size="10"
+				converterMessage="Por favor, informe uma data válida no seguinte formato: 29-04-2017">
 				<f:convertDateTime pattern="dd-MM-yyyy" />
 			</h:inputText>
 
 			<h:outputLabel value="Data Realizada" for="campoDataRealizada" />
 			<h:inputText id="campoDataRealizada"
-				value="#{cadastroTarefaBean.tarefa.dataRealizada}" >
+				value="#{cadastroTarefaBean.tarefa.dataRealizada}" size="10"
+				converterMessage="Por favor, informe uma data válida no seguinte formato: 29-04-2017">
 				<f:convertDateTime pattern="dd-MM-yyyy" />
 			</h:inputText>
-			
-			<h:commandButton value="Cadastrar" action="#{cadastroTarefaBean.cadastrar}" />
+
+			<h:commandButton value="Cadastrar"
+				action="#{cadastroTarefaBean.cadastrar()}" />
 
 		</h:panelGrid>
 
