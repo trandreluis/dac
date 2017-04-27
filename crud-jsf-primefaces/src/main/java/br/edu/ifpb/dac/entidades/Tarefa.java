@@ -2,6 +2,14 @@ package br.edu.ifpb.dac.entidades;
 
 import java.util.Date;
 
+/**
+ * 
+ * email: tr.andreluis@gmail.com
+ * 
+ * @author <a href="https://github.com/trandreluis">André Luís</a>
+ *
+ */
+
 public class Tarefa {
 
 	private Integer id;
