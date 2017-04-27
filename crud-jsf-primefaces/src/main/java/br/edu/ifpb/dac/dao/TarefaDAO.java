@@ -5,6 +5,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import br.edu.ifpb.dac.entidades.Tarefa;
 
+/**
+ * 
+ * email: tr.andreluis@gmail.com
+ * 
+ * @author <a href="https://github.com/trandreluis">André Luís</a>
+ *
+ */
+
 public class TarefaDAO {
 
 	private static ArrayList<Tarefa> tarefasCadatsradas = new ArrayList<>();
