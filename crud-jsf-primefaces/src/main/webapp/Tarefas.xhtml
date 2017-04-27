@@ -12,6 +12,8 @@
 
 <h:body>
 
+	<p:growl id="growl" showDetail="true" />
+
 	<h:form>
 
 		<p:outputLabel
@@ -27,11 +29,14 @@
 
 		<br />
 
-		<p:panelGrid columns="4" style="margin: 0 auto;">
+		<p:panelGrid columns="5" style="margin: 0 auto;">
 
 			<p:outputLabel value="Titulo" for="tituloTarefa" />
-			<p:inputText id="tituloTarefa" value="#{tarefasBean.tituloBuscado}" />
+			<p:inputText id="tituloTarefa" value="#{tarefasBean.tituloBuscado}"
+				binding="#{tarefasBean.inputTituloTarefa}" />
 			<p:commandButton value="Buscar" action="#{tarefasBean.buscar}"
+				ajax="false" />
+			<p:commandButton value="Limpar" action="#{tarefasBean.limpar}"
 				ajax="false" />
 
 		</p:panelGrid>
