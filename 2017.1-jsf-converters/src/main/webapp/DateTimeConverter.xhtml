@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Converters</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Voltar..."
+			action="index.xhtml?faces-redirect=true" immediate="true" />
+		<h:messages />
+		<br />
+		<h:outputText
+			value="Insira uma data e horário (formato: dd/MM/yyyy HH:mm):" />
+		<h:panelGrid columns="3">
+
+			<h:outputLabel for="dateTimeConverter" value="DateTimeConverter: " />
+			<h:inputText id="dateTimeConverter"
+				value="#{dateTimeConverterBean.valor}" label="DateTimeConverter">
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+			</h:inputText>
+			<h:message for="dateTimeConverter" />
+
+			<h:outputText value="#{dateTimeConverterBean.valor}">
+				<f:convertDateTime locale="pt_BR" type="both" dateStyle="full" />
+			</h:outputText>
+
+		</h:panelGrid>
+		<h:commandButton value="Submeter!" />
+	</h:form>
+</h:body>
+</html>

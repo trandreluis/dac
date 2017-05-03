@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Converters</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Voltar..."
+			action="index.xhtml?faces-redirect=true" immediate="true" />
+		<h:messages />
+		<br />
+		<h:outputText
+			value="Insira um valor inteiro (pelo menos 3 e no máximo 5 dígitos):" />
+		<h:panelGrid columns="3">
+
+			<h:outputLabel for="numberConverter" value="NumberConverter: " />
+			<h:inputText id="numberConverter"
+				value="#{numberConverterBean.valor}" label="NumberConverter">
+				<f:convertNumber pattern="#" minIntegerDigits="3"
+					maxIntegerDigits="5" minFractionDigits="0" maxFractionDigits="0"
+					type="number" />
+			</h:inputText>
+			<h:message for="numberConverter" />
+
+			<h:outputText value="#{numberConverterBean.valor}">
+				<f:convertNumber pattern="#" minIntegerDigits="3"
+					maxIntegerDigits="5" minFractionDigits="0" maxFractionDigits="0"
+					type="number" />
+			</h:outputText>
+
+		</h:panelGrid>
+		<h:commandButton value="Submeter!" />
+	</h:form>
+</h:body>
+</html>

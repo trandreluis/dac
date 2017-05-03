@@ -1,0 +1,6 @@
+# Pastas e arquivos do eclipse
+
+target/
+.settings
+.classpath
+.project

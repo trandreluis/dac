@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Converters</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Voltar..."
+			action="index.xhtml?faces-redirect=true" immediate="true" />
+		<h:messages />
+		<br />
+		<h:outputText value="Insira um valor Short:" />
+		<h:panelGrid columns="3">
+
+			<h:outputLabel for="shortConverter" value="ShortConverter: " />
+			<h:inputText id="shortConverter" value="#{shortConverterBean.valor}"
+				label="ShortConverter" />
+			<h:message for="shortConverter" />
+
+			<h:outputText value="#{shortConverterBean.valor}" />
+
+		</h:panelGrid>
+		<h:commandButton value="Submeter!" />
+	</h:form>
+</h:body>
+</html>
