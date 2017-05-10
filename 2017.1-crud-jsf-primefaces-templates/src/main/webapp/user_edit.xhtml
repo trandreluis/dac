@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/__commonLayout.xhtml">
+
+	<f:metadata>
+		<o:viewParam name="user" value="#{userEdit.user}"
+			converter="userConverter" />
+		<f:event listener="#{userEdit.preRenderView()}" type="preRenderView" />
+	</f:metadata>
+
+	<ui:define name="title">
+		User edit
+	</ui:define>
+
+	<ui:define name="content">
+		<p:messages id="idMessages" autoUpdate="true" />
+
+		<h:form id="form">
+
+			<p:panelGrid columns="2">
+				<f:facet name="header">User</f:facet>
+
+				<p:outputLabel value="Id" rendered="#{userEdit.edicaoDeUsuario}" />
+				<p:outputLabel value="#{userEdit.user.id}"
+					rendered="#{userEdit.edicaoDeUsuario}" />
+
+				<p:outputLabel for="firstName" value="First name" />
+				<p:inputText id="firstName" value="#{userEdit.user.firstName}"
+					label="First name" />
+
+				<p:outputLabel for="lastName" value="Last name" />
+				<p:inputText id="lastName" value="#{userEdit.user.lastName}"
+					label="Last name" />
+
+				<p:outputLabel for="birthDay" value="Birthday" />
+				<ui:include src="/WEB-INF/templates/_calendario.xhtml">
+					<ui:param name="id" value="birthDay" />
+					<ui:param name="required" value="true" />
+					<ui:param name="value" value="#{userEdit.user.birthday}" />
+					<ui:param name="name" value="Birthday" />
+				</ui:include>
+
+				<p:outputLabel for="email" value="Email" />
+				<p:inputText id="email" value="#{userEdit.user.email}"
+					required="true" />
+
+				<f:facet name="footer">
+					<p:commandButton id="botaoSubmeter" action="#{userEdit.saveUser}" value="Submit"
+						icon="ui-icon-check" />
+					<p:commandButton id="botaoCancelar" action="index.xhtml?faces-redirect=true" value="Cancel"
+						icon="ui-icon-cancel" immediate="true" />
+				</f:facet>
+
+			</p:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

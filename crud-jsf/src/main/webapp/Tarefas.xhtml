@@ -24,8 +24,13 @@
 
 		</div>
 
+		<div align="center">
+			<h:outputLink value="SelecionarTarefa.xhtml" 
+				style="font-size: 20px;">Selecionar Tarefa</h:outputLink>
+		</div>
+
 		<br />
-		
+
 		<h:panelGrid columns="4" style="margin: 0 auto;">
 
 			<h:outputLabel value="Titulo" for="tituloTarefa" />
@@ -69,7 +74,8 @@
 			</h:column>
 
 			<h:column>
-				<h:button value="Editar" outcome="CadastroTarefa?faces-redirect=true">
+				<h:button value="Editar"
+					outcome="CadastroTarefa?faces-redirect=true">
 					<f:param name="tarefa" value="#{tarefa.id}" />
 				</h:button>
 			</h:column>
