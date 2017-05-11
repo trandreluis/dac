@@ -1,4 +1,4 @@
-package br.edu.ifpb.dac.entidades;
+package br.edu.ifpb.dac.converters;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -6,8 +6,9 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 import br.edu.ifpb.dac.dao.TarefaDAO;
+import br.edu.ifpb.dac.entidades.Tarefa;
 
-@FacesConverter(value = "tarefaConverter")
+@FacesConverter(forClass=Tarefa.class)
 public class TarefaConverter implements Converter {
 
 	private TarefaDAO daoTarefa = new TarefaDAO();

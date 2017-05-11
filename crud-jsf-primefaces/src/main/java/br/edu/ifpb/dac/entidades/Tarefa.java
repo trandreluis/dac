@@ -2,14 +2,6 @@ package br.edu.ifpb.dac.entidades;
 
 import java.util.Date;
 
-/**
- * 
- * email: tr.andreluis@gmail.com
- * 
- * @author <a href="https://github.com/trandreluis">André Luís</a>
- *
- */
-
 public class Tarefa {
 
 	private Integer id;
@@ -51,10 +43,6 @@ public class Tarefa {
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	
-	public String toString() {
-		return "ESTA É UMA TAREFA";
 	}
 	
 }

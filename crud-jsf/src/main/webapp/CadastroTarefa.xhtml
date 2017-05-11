@@ -6,8 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <f:metadata>
-	<f:viewParam name="tarefa" value="#{cadastroTarefaBean.tarefa}"
-		converter="tarefaConverter" />
+	<f:viewParam name="tarefa" value="#{cadastroTarefaBean.tarefa}" />
 	<f:event listener="#{cadastroTarefaBean.preRenderizacao()}"
 		type="preRenderView" />
 </f:metadata>

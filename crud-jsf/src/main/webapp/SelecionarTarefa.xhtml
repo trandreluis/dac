@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Selecionar Tarefa</title>
+</h:head>
+
+<h:body>
+
+	<h:messages></h:messages>
+
+	<h:form>
+
+		<h:outputLabel
+			style="display: block; text-align: center; font-size: 30px;"
+			value="Selecione a Tarefa" />
+		<br />
+
+		<div align="center">
+			<h:selectOneMenu value="#{selecionarTarefaBean.tarefaSelecionada}">
+				<f:selectItems value="#{selecionarTarefaBean.tarefas}" var="tarefa" 
+					itemLabel="#{tarefa.titulo}" intemValue="#{tarefa}" />
+			</h:selectOneMenu>
+		</div>
+
+		<br />
+
+		<div align="center">
+			<h:commandButton value="Selecionar" />
+		</div>
+
+		<br />
+		<div align="center">
+			<h:outputLabel id="saida"
+				value="#{selecionarTarefaBean.tarefaSelecionada.descricao}" />
+		</div>
+
+	</h:form>
+
+</h:body>
+
+</html>

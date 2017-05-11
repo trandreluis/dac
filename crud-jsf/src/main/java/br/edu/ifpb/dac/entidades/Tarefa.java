@@ -45,8 +45,4 @@ public class Tarefa {
 		this.id = id;
 	}
 	
-	public String toString() {
-		return "ESTA É UMA TAREFA";
-	}
-	
 }
