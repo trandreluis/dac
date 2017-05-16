@@ -6,48 +6,58 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>Selecionar Tarefa</title>
-</h:head>
+<ui:composition template="/WEB-INF/templates/LayoutPadrao.xhtml">
 
-<h:body>
+	<ui:define name="title">
+		Selecionar Tarefa
+	</ui:define>
 
-	<p:growl id="growl" showDetail="true" />
+	<ui:define name="content">
 
-	<h:form>
+		<h:body>
 
-		<p:outputLabel
-			style="display: block; text-align: center; font-size: 30px;"
-			value="Selecione a Tarefa" />
+			<p:growl id="growl" showDetail="true" />
+
+			<h:form>
+
+				<p:outputLabel
+					style="display: block; text-align: center; font-size: 30px;"
+					value="Selecione a Tarefa" />
+				<br />
+
+				<div align="center">
+					<p:panelGrid columns="3">
+						<p:outputLabel value="Título:" />
+						<p:selectOneMenu value="#{selecionarTarefaBean.tarefaSelecionada}">
+							<f:selectItems value="#{selecionarTarefaBean.tarefas}"
+								var="tarefa" itemLabel="#{tarefa.titulo}" intemValue="#{tarefa}" />
+						</p:selectOneMenu>
+						<p:commandButton value="Selecionar" ajax="false" />
+					</p:panelGrid>
+				</div>
+
+				<br />
+
+				<br />
+				<div align="center">
+					<p:panelGrid columns="2">
+
+						<p:outputLabel value="Descrição:" />
+
+						<p:outputLabel id="saida"
+							value="#{selecionarTarefaBean.tarefaSelecionada.descricao}" />
+
+					</p:panelGrid>
+				</div>
+
+			</h:form>
+
+		</h:body>
+
 		<br />
 
-		<div align="center">
-			<p:panelGrid columns="3">
-				<p:outputLabel value="Título:" />
-				<p:selectOneMenu value="#{selecionarTarefaBean.tarefaSelecionada}">
-					<f:selectItems value="#{selecionarTarefaBean.tarefas}" var="tarefa"
-						itemLabel="#{tarefa.titulo}" intemValue="#{tarefa}" />
-				</p:selectOneMenu>
-				<p:commandButton value="Selecionar" ajax="false" />
-			</p:panelGrid>
-		</div>
+	</ui:define>
 
-		<br />
-
-		<br />
-		<div align="center">
-			<p:panelGrid columns="2">
-
-				<p:outputLabel value="Descrição:" />
-
-				<p:outputLabel id="saida"
-					value="#{selecionarTarefaBean.tarefaSelecionada.descricao}" />
-
-			</p:panelGrid>
-		</div>
-
-	</h:form>
-
-</h:body>
+</ui:composition>
 
 </html>
