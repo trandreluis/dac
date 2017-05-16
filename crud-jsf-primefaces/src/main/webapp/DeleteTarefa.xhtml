@@ -5,39 +5,50 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
-<f:metadata>
-	<f:viewParam name="tarefa" value="#{tarefaDelete.tarefa}" />
-</f:metadata>
 
-<h:head>
-	<title>Deletar Tarefa</title>
-</h:head>
+<ui:composition template="/WEB-INF/templates/LayoutPadrao.xhtml">
 
-<h:body>
+	<f:metadata>
+		<f:viewParam name="tarefa" value="#{tarefaDelete.tarefa}" />
+	</f:metadata>
 
-	<p:growl id="growl" showDetail="true" />
+	<ui:define name="title">
+		Deletar Tarefa
+	</ui:define>
 
-	<h:form>
-	
-		<p:outputLabel
-			style="display: block; text-align: center; font-size: 30px;"
-			value="Deletar Tarefa" />
+	<ui:define name="content">
+
+		<h:body>
+
+			<p:growl id="growl" showDetail="true" />
+
+			<h:form>
+
+				<p:outputLabel
+					style="display: block; text-align: center; font-size: 30px;"
+					value="Deletar Tarefa" />
+				<br />
+
+				<p:outputLabel style="display: block; text-align: center;"
+					value="Tem certeza que deseja deletar a Tarefa com titulo: #{tarefaDelete.tarefa.titulo}" />
+				<br />
+
+				<div align="center">
+					<p:panelGrid columns="2">
+						<p:commandButton value="Sim" action="#{tarefaDelete.deletar}"
+							styleClass="ui-priority-primary" />
+						<p:commandButton value="Não" action="#{tarefaDelete.cancelar}" />
+					</p:panelGrid>
+				</div>
+
+			</h:form>
+
+		</h:body>
+
 		<br />
 
-		<p:outputLabel style="display: block; text-align: center;"
-			value="Tem certeza que deseja deletar a Tarefa com titulo: #{tarefaDelete.tarefa.titulo}" />
-		<br />
+	</ui:define>
 
-		<div align="center">
-			<p:panelGrid columns="2">
-				<p:commandButton value="Sim" action="#{tarefaDelete.deletar}" styleClass="ui-priority-primary" />
-				<p:commandButton value="Não" action="#{tarefaDelete.cancelar}" />
-			</p:panelGrid>
-		</div>
-		
-	</h:form>
-
-</h:body>
+</ui:composition>
 
 </html>
