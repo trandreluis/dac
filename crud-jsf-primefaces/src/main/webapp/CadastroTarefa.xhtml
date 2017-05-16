@@ -6,62 +6,72 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<f:metadata>
-	<f:viewParam name="tarefa" value="#{cadastroTarefaBean.tarefa}" />
-	<f:event listener="#{cadastroTarefaBean.preRenderizacao()}"
-		type="preRenderView" />
-</f:metadata>
+<ui:composition template="/WEB-INF/templates/LayoutPadrao.xhtml">
 
-<h:head>
-	<title>Cadastro de Tarefas</title>
-</h:head>
+	<f:metadata>
+		<f:viewParam name="tarefa" value="#{cadastroTarefaBean.tarefa}" />
+		<f:event listener="#{cadastroTarefaBean.preRenderizacao()}"
+			type="preRenderView" />
+	</f:metadata>
 
-<h:body>
+	<ui:define name="title">
+		Cadastro de Tarefas
+	</ui:define>
 
-	<p:growl id="growl" showDetail="true" />
+	<ui:define name="content">
 
-	<h:form>
-		<p:outputLabel
-			style="display: block; text-align: center; font-size: 30px;"
-			value="Cadastrar Tarefa" />
+		<h:body>
+
+			<p:growl id="growl" showDetail="true" />
+
+			<h:form>
+				<p:outputLabel
+					style="display: block; text-align: center; font-size: 30px;"
+					value="Cadastrar Tarefa" />
+				<br />
+
+				<p:panelGrid columns="2" columnClasses="label, value"
+					style="margin: 0 auto;">
+
+					<p:outputLabel value="Título" for="campoTarefa" />
+					<p:inputText id="campoTarefa"
+						value="#{cadastroTarefaBean.tarefa.titulo}" required="true"
+						requiredMessage="Por favor, informe um título" />
+
+					<p:outputLabel value="Descrição" for="campoDescricao" />
+					<p:inputTextarea id="campoDescricao"
+						value="#{cadastroTarefaBean.tarefa.descricao}" required="true"
+						style="overflow:auto; resize:none"
+						requiredMessage="Por favor, informe uma descrição." />
+
+					<p:outputLabel value="Data Prevista" for="campoDataPrevista" />
+					<p:calendar id="campoDataPrevista"
+						value="#{cadastroTarefaBean.tarefa.dataPrevista}" size="10"
+						pattern="dd/MM/yyyy" showButtonPanel="true"
+						converterMessage="Por favor, informe uma data válida no seguinte formato: 29/04/2017">
+					</p:calendar>
+
+					<p:outputLabel value="Data Realizada" for="campoDataRealizada" />
+					<p:calendar id="campoDataRealizada"
+						value="#{cadastroTarefaBean.tarefa.dataRealizada}" size="10"
+						pattern="dd/MM/yyyy" showButtonPanel="true"
+						converterMessage="Por favor, informe uma data válida no seguinte formato: 29/04/2017"
+						validator="dataFuturaValidator">
+					</p:calendar>
+
+					<p:commandButton value="Salvar"
+						action="#{cadastroTarefaBean.cadastrar}" ajax="false" />
+
+				</p:panelGrid>
+
+			</h:form>
+
+		</h:body>
+
 		<br />
 
-		<p:panelGrid columns="2" columnClasses="label, value"
-			style="margin: 0 auto;">
+	</ui:define>
 
-			<p:outputLabel value="Título" for="campoTarefa" />
-			<p:inputText id="campoTarefa"
-				value="#{cadastroTarefaBean.tarefa.titulo}" required="true"
-				requiredMessage="Por favor, informe um título" />
-
-			<p:outputLabel value="Descrição" for="campoDescricao" />
-			<p:inputTextarea id="campoDescricao"
-				value="#{cadastroTarefaBean.tarefa.descricao}" required="true"
-				style="overflow:auto; resize:none"
-				requiredMessage="Por favor, informe uma descrição." />
-
-			<p:outputLabel value="Data Prevista" for="campoDataPrevista" />
-			<p:calendar id="campoDataPrevista"
-				value="#{cadastroTarefaBean.tarefa.dataPrevista}" size="10" pattern="dd/MM/yyyy"
-				showButtonPanel="true"
-				converterMessage="Por favor, informe uma data válida no seguinte formato: 29/04/2017">
-			</p:calendar>
-
-			<p:outputLabel value="Data Realizada" for="campoDataRealizada" />
-			<p:calendar id="campoDataRealizada"
-				value="#{cadastroTarefaBean.tarefa.dataRealizada}" size="10" pattern="dd/MM/yyyy"
-				showButtonPanel="true"
-				converterMessage="Por favor, informe uma data válida no seguinte formato: 29/04/2017"
-				validator="dataFuturaValidator">
-			</p:calendar>
-
-			<p:commandButton value="Salvar"
-				action="#{cadastroTarefaBean.cadastrar}" ajax="false" />
-
-		</p:panelGrid>
-
-	</h:form>
-
-</h:body>
+</ui:composition>
 
 </html>
