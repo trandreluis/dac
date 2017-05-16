@@ -6,100 +6,111 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>Tarefas</title>
-</h:head>
+<ui:composition template="/WEB-INF/templates/LayoutPadrao.xhtml">
 
-<h:body>
+	<ui:define name="title">
+		Tarefas
+	</ui:define>
 
-	<p:growl id="growl" showDetail="true" />
+	<ui:define name="content">
 
-	<h:form>
+		<h:body>
 
-		<p:outputLabel
-			style="display: block; text-align: center; font-size: 30px;"
-			value="Tarefas" />
+			<p:growl id="growl" showDetail="true" />
+
+			<h:form>
+
+				<p:outputLabel
+					style="display: block; text-align: center; font-size: 30px;"
+					value="Tarefas" />
+				<br />
+
+				<div align="center">
+
+					<p:panelGrid columns="2">
+
+						<p:button value="Cadastrar tarefa"
+							outcome="CadastroTarefa?faces-redirect=true" />
+
+						<p:button value="Selecionar tarefa"
+							outcome="SelecionarTarefa?faces-redirect=true" />
+
+					</p:panelGrid>
+
+				</div>
+
+				<br />
+
+				<p:panelGrid columns="5" style="margin: 0 auto;">
+
+					<p:outputLabel value="Titulo" for="tituloTarefa" />
+					<p:inputText id="tituloTarefa" value="#{tarefasBean.tituloBuscado}"
+						binding="#{tarefasBean.inputTituloTarefa}" />
+					<p:commandButton value="Buscar" action="#{tarefasBean.buscar}"
+						ajax="false" />
+					<p:commandButton value="Limpar" action="#{tarefasBean.limpar}"
+						ajax="false" />
+
+				</p:panelGrid>
+
+				<br />
+
+				<p:dataTable value="#{tarefasBean.tarefas}" var="tarefa"
+					emptyMessage="Nenhuma tarefa encontrada.">
+
+					<p:column>
+						<f:facet name="header">ID</f:facet>
+						<p:outputLabel value="#{tarefa.id}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Título</f:facet>
+						<p:outputLabel value="#{tarefa.titulo}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Descrição</f:facet>
+						<p:outputLabel value="#{tarefa.descricao}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Data Prevista</f:facet>
+						<p:outputLabel value="#{tarefa.dataPrevista}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:outputLabel>
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Data Realizada</f:facet>
+						<p:outputLabel value="#{tarefa.dataRealizada}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:outputLabel>
+					</p:column>
+
+					<p:column>
+						<p:button value="Editar"
+							outcome="CadastroTarefa?faces-redirect=true">
+							<f:param name="tarefa" value="#{tarefa.id}" />
+						</p:button>
+					</p:column>
+
+					<p:column>
+						<p:button value="Deletar"
+							outcome="DeleteTarefa?faces-redirect=true">
+							<f:param name="tarefa" value="#{tarefa.id}" />
+						</p:button>
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+
+		</h:body>
+
 		<br />
 
-		<div align="center">
+	</ui:define>
 
-			<p:panelGrid columns="2">
-
-				<p:button value="Cadastrar tarefa"
-					outcome="CadastroTarefa?faces-redirect=true" />
-
-				<p:button value="Selecionar tarefa"
-					outcome="SelecionarTarefa?faces-redirect=true" />
-
-			</p:panelGrid>
-			
-		</div>
-
-		<br />
-
-		<p:panelGrid columns="5" style="margin: 0 auto;">
-
-			<p:outputLabel value="Titulo" for="tituloTarefa" />
-			<p:inputText id="tituloTarefa" value="#{tarefasBean.tituloBuscado}"
-				binding="#{tarefasBean.inputTituloTarefa}" />
-			<p:commandButton value="Buscar" action="#{tarefasBean.buscar}"
-				ajax="false" />
-			<p:commandButton value="Limpar" action="#{tarefasBean.limpar}"
-				ajax="false" />
-
-		</p:panelGrid>
-
-		<br />
-
-		<p:dataTable value="#{tarefasBean.tarefas}" var="tarefa"
-			emptyMessage="Nenhuma tarefa encontrada.">
-
-			<p:column>
-				<f:facet name="header">ID</f:facet>
-				<p:outputLabel value="#{tarefa.id}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">Título</f:facet>
-				<p:outputLabel value="#{tarefa.titulo}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">Descrição</f:facet>
-				<p:outputLabel value="#{tarefa.descricao}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">Data Prevista</f:facet>
-				<p:outputLabel value="#{tarefa.dataPrevista}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</p:outputLabel>
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">Data Realizada</f:facet>
-				<p:outputLabel value="#{tarefa.dataRealizada}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</p:outputLabel>
-			</p:column>
-
-			<p:column>
-				<p:button value="Editar"
-					outcome="CadastroTarefa?faces-redirect=true">
-					<f:param name="tarefa" value="#{tarefa.id}" />
-				</p:button>
-			</p:column>
-
-			<p:column>
-				<p:button value="Deletar" outcome="DeleteTarefa?faces-redirect=true">
-					<f:param name="tarefa" value="#{tarefa.id}" />
-				</p:button>
-			</p:column>
-
-		</p:dataTable>
-
-	</h:form>
-
-</h:body>
+</ui:composition>
 
 </html>
