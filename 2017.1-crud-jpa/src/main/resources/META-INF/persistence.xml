@@ -7,6 +7,7 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
 
+		<!-- Classes que serao mapeadas e registradas no banco -->
 		<class>br.edu.ifpb.mt.daca.entities.User</class>
 
 		<properties>
@@ -27,9 +28,10 @@
 			 -->
 			<!-- /Configuração Hibernate SGBD Oracle -->
 
-			<!-- Configuração Hibernate SGBD MySQL -->
+	
+			<!-- Configuração Hibernate SGBD MySQL Create Database -->
 			
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/daca?useSSL=false&amp;serverTimezone=UTC" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/daca?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true" />
 			<property name="hibernate.connection.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.username" value="root" />
@@ -39,6 +41,22 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
+			
+			<!-- /Configuração Hibernate SGBD MySQL Create Database -->
+
+
+			<!-- Configuração Hibernate SGBD MySQL -->
+			
+			<!-- <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/daca?useSSL=false&amp;serverTimezone=UTC" />
+			<property name="hibernate.connection.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="root" />
+			<property name="hibernate.default_schema" value="daca" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" /> -->
 			
 			<!-- /Configuração Hibernate SGBD MySQL -->
 
@@ -86,15 +104,27 @@
 			-->
 			<!-- /Configuração EclipseLink SGBD PostgreSQL -->
 			
-			<!-- Configuração EclipseLink SGBD MySQL -->
+			<!-- Configuração EclipseLink SGBD MySQL Create Database -->
 
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/daca?useSSL=false&amp;serverTimezone=UTC" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/daca?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="root" />
 			<property name="eclipselink.logging.level.sql" value="FINE"/>
 			<property name="eclipselink.logging.parameters" value="true"/>
 			<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+			
+			<!-- /Configuração EclipseLink SGBD MySQL Create Database -->
+			
+			<!-- Configuração EclipseLink SGBD MySQL -->
+
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/daca?useSSL=false&amp;serverTimezone=UTC" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="root" />
+			<property name="eclipselink.logging.level.sql" value="FINE"/>
+			<property name="eclipselink.logging.parameters" value="true"/>
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/> -->
 			
 			<!-- /Configuração EclipseLink SGBD MySQL -->
 
