@@ -35,29 +35,14 @@
 			<artifactId>eclipselink</artifactId>
 			<version>${eclipselink.version}</version>
 		</dependency>
-		<!-- JDBC Driver do PostgreSQL
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.1.1</version>
-			<version>42.1.1</version>
-			<version>42.1.1.jre7</version>
-			<version>42.1.1.jre6</version>
-		</dependency>
-		 -->
+		<!-- JDBC Driver do PostgreSQL <dependency> <groupId>org.postgresql</groupId> 
+			<artifactId>postgresql</artifactId> <version>42.1.1</version> <version>42.1.1</version> 
+			<version>42.1.1.jre7</version> <version>42.1.1.jre6</version> </dependency> -->
 		<!-- JDBC Driver do MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>6.0.6</version>
-		</dependency>
-		<!-- JDBC Driver do Oracle -->
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>11.2.0.3.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/ojdbc6.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>
