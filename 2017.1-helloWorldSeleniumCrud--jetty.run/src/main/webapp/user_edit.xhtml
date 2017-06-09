@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+<f:metadata>
+	<o:viewParam name="user" value="#{userEdit.user}" converter="#{userConverter}" />
+	<f:event listener="#{userEdit.preRenderView()}" type="preRenderView" />
+</f:metadata>
+
+<h:head>
+	<title>User edit</title>
+</h:head>
+
+<h:body>
+
+	<p:messages id="idMessages" autoUpdate="true" />
+
+	<h:form id="form">
+
+		<p:panelGrid columns="2">
+			<f:facet name="header">User</f:facet>
+
+			<p:outputLabel value="Id" rendered="#{userEdit.edicaoDeUsuario}" />
+			<p:outputLabel value="#{userEdit.user.id}" rendered="#{userEdit.edicaoDeUsuario}" />
+
+			<p:outputLabel for="firstName" value="First name" />
+			<p:inputText id="firstName" value="#{userEdit.user.firstName}" label="First name" />
+
+			<p:outputLabel for="lastName" value="Last name" />
+			<p:inputText id="lastName" value="#{userEdit.user.lastName}" label="Last name" />
+
+			<p:outputLabel for="birthDay" value="Birthday" />
+			<p:calendar 
+				locale="pt_BR" 
+				showButtonPanel="true" 
+				navigator="true"
+				id="birthDay" 
+				pattern="dd-MM-yyyy"
+				yearRange="-30:+10"
+				required="true"
+				value="#{userEdit.user.birthday}"
+				requiredMessage="O campo Birthday deve ser preenchido">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</p:calendar>
+
+			<p:outputLabel for="email" value="Email" />
+			<p:inputText id="email" value="#{userEdit.user.email}" required="true" />
+
+			<f:facet name="footer">
+				<p:commandButton id="botaoSubmeter" action="#{userEdit.saveUser}" value="Submit" icon="ui-icon-check" />
+				<p:commandButton id="botaoCancelar" action="index.xhtml?faces-redirect=true" value="Cancel" icon="ui-icon-cancel" immediate="true" />
+			</f:facet>
+
+		</p:panelGrid>
+	</h:form>
+
+</h:body>
+</html>

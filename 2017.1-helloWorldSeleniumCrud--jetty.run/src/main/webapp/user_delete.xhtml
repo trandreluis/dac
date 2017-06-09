@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+<f:metadata>
+	<o:viewParam name="user" value="#{userDelete.user}"
+		converter="#{userConverter}" />
+</f:metadata>
+
+<h:head>
+	<title>User delete</title>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+		<p:panelGrid columns="1">
+			<f:facet name="header">
+				Confirmação!
+			</f:facet>
+			<h:outputLabel
+				value="Do you want to delete '#{userDelete.user.firstName} #{userDelete.user.lastName}'?" />
+			<f:facet name="footer">
+				<p:commandButton id="botaoDelete" action="#{userDelete.delete}" value="Delete" icon="ui-icon-close" />
+				<p:commandButton id="botaoCancelarRemocao" action="#{userDelete.cancel}" value="Cancel" icon="ui-icon-cancel" />
+			</f:facet>
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>
