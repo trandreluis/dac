@@ -6,7 +6,6 @@
 	<persistence-unit name="daca" transaction-type="RESOURCE_LOCAL">
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
 		<class>br.edu.ifpb.mt.daca.entities.embeddedid.NewsEI</class>
 		<class>br.edu.ifpb.mt.daca.entities.embeddedid.NewsIdEI</class>
 		<class>br.edu.ifpb.mt.daca.entities.idclass.NewsIC</class>
@@ -14,21 +13,19 @@
 
 		<properties>
 			<!-- Configuração Hibernate SGBD MySQL -->
-			<!-- 
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/DACA?useSSL=false&amp;serverTimezone=UTC" />
-			<property name="hibernate.connection.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/news?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
 			<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="123456" />
-			<property name="hibernate.default_schema" value="DACA" />
+			<property name="hibernate.connection.password" value="root" />
+			<property name="hibernate.default_schema" value="news" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
-			-->
 			<!-- /Configuração Hibernate SGBD MySQL -->
 
-			<!-- Configuração Hibernate SGBD PostgreSQL -->
+			<!-- Configuração Hibernate SGBD PostgreSQL
 			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/DACA" />
 			<property name="hibernate.connection.dialect" value="org.hibernate.dialect.PostgreSQL9" />
 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
@@ -39,7 +36,7 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
-			<!-- /Configuração Hibernate SGBD PostgreSQL -->
+			Configuração Hibernate SGBD PostgreSQL -->
 
 			<!-- Configuração do Pool de conexões -->
 			<!-- DICA: checar conexões ativas no PostgreSQL: SELECT * FROM pg_stat_activity; -->
