@@ -22,10 +22,10 @@ public class PesquisaGoogleTest {
 	@Before
 	public void setUp() throws Exception {
 //		System.setProperty("webdriver.gecko.driver", 
-//				"E:\\jaindsonvs\\workspace-ifpb\\2017.1-helloWorldSelenium\\lib\\geckodriver.exe");
+//				"C:\\DAC\\dac\\2017.1-helloWorldSelenium\\lib\\geckodriver.exe");
 //		driver = new FirefoxDriver();
 		System.setProperty("webdriver.chrome.driver",
-				"E:\\jaindsonvs\\workspace-ifpb\\2017.1-helloWorldSelenium\\lib\\chromedriver.exe");
+				"C:\\DAC\\dac\\2017.1-helloWorldSelenium\\lib\\chromedriver.exe");
 		driver = new ChromeDriver();
 		baseUrl = "http://www.google.com.br/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
