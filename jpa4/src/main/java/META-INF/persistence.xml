@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+	<persistence-unit name="jpa4" transaction-type="RESOURCE_LOCAL">
+
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<!-- Classes que serao mapeadas e registradas no banco -->
+		<class>br.edu.ifpb.mt.dac.entidades.a.unidirecional.Turista</class>
+		<class>br.edu.ifpb.mt.dac.entidades.a.unidirecional.Passaporte</class>
+		<class>br.edu.ifpb.mt.dac.entidades.a.bidirecional.Turista</class>
+		<class>br.edu.ifpb.mt.dac.entidades.a.bidirecional.Passaporte</class>
+		
+		<class>br.edu.ifpb.mt.dac.entidades.b.unidirecional.Departamento</class>
+		<class>br.edu.ifpb.mt.dac.entidades.b.unidirecional.Empregado</class>
+		<class>br.edu.ifpb.mt.dac.entidades.b.bidirecional.Empregado</class>
+		<class>br.edu.ifpb.mt.dac.entidades.b.bidirecional.Departamento</class>
+		
+		<class>br.edu.ifpb.mt.dac.entidades.c.unidirecional.Celular</class>
+		<class>br.edu.ifpb.mt.dac.entidades.c.unidirecional.Chamada</class>
+		<class>br.edu.ifpb.mt.dac.entidades.c.bidirecional.Celular</class>
+		<class>br.edu.ifpb.mt.dac.entidades.c.bidirecional.Chamada</class>
+		
+		<class>br.edu.ifpb.mt.dac.entidades.d.unidirecional.Postagem</class>
+		<class>br.edu.ifpb.mt.dac.entidades.d.unidirecional.Comentario</class>
+		<class>br.edu.ifpb.mt.dac.entidades.d.bidirecional.Postagem</class>
+		<class>br.edu.ifpb.mt.dac.entidades.d.bidirecional.Comentario</class>
+		
+		<properties>
+
+			<!-- HIBERNATE -->
+
+			<!-- Configuração Hibernate SGBD MySQL Create Database -->
+
+			<!-- Configuração Hibernate SGBD MySQL -->
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://localhost:3306/jpa_relacionamento?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="root" />
+			<property name="hibernate.default_schema" value="jpa_relacionamento" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<!-- /Configuração Hibernate SGBD MySQL -->
+
+			<!-- Configuração do Pool de conexões Hibernate -->
+			<!-- DICA: checar conexões ativas no PostgreSQL: SELECT * FROM pg_stat_activity; -->
+			<!-- DICA: checar conexões ativas no MySQL: show processlist; -->
+			<!-- DICA: checar conexões ativas no Oracle: http://dbaforums.org/oracle/index.php?showtopic=16834 -->
+			<property name="hibernate.c3p0.min_size" value="5" /> <!-- 5 -->
+			<property name="hibernate.c3p0.max_size" value="20" /> <!-- 20 -->
+			<property name="hibernate.c3p0.timeout" value="3000" />
+			<property name="hibernate.c3p0.max_statements" value="50" />
+			<property name="hibernate.c3p0.idle_test_period" value="300" />
+			<!-- /Configuração do Pool de conexões Hibernate -->
+
+			<!-- /HIBERNATE -->
+
+		</properties>
+
+	</persistence-unit>
+
+</persistence>
