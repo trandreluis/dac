@@ -78,7 +78,7 @@ public class PostagemDAO extends DAO {
 		EntityManager em = getEntityManager();
 		List<Postagem> resultado = null;
 		try {
-			TypedQuery<Postagem> query = em.createQuery("SELECT c FROM POSTAGEM_BI c", Postagem.class);
+			TypedQuery<Postagem> query = em.createQuery("SELECT p FROM POSTAGEM_BI p", Postagem.class);
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();

@@ -1,4 +1,4 @@
-package br.edu.ifpb.mt.dac.dao.d.unidirecional;
+package br.edu.ifpb.mt.dac.dao.f.bidirecional;
 
 import java.util.List;
 
@@ -8,16 +8,16 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import br.edu.ifpb.mt.dac.dao.generic.DAO;
-import br.edu.ifpb.mt.dac.entidades.d.unidirecional.Postagem;
+import br.edu.ifpb.mt.dac.entidades.f.bidirecional.Colaborador;
 
-public class PostagemDAO extends DAO {
+public class ColaboradorDAO extends DAO {
 
-	public void save(Postagem postagem) {
+	public void save(Colaborador colaborador) {
 		EntityManager em = getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		try {
-			em.persist(postagem);
+			em.persist(colaborador);
 			transaction.commit();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
@@ -27,13 +27,13 @@ public class PostagemDAO extends DAO {
 		}
 	}
 
-	public Postagem update(Postagem postagem) {
+	public Colaborador update(Colaborador colaborador) {
 		EntityManager em = getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
-		Postagem resultado = postagem;
+		Colaborador resultado = colaborador;
 		try {
-			resultado = em.merge(postagem);
+			resultado = em.merge(colaborador);
 			transaction.commit();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
@@ -44,13 +44,13 @@ public class PostagemDAO extends DAO {
 		return resultado;
 	}
 
-	public void delete(Postagem postagem) {
+	public void delete(Colaborador colaborador) {
 		EntityManager em = getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		try {
-			postagem = em.find(Postagem.class, postagem.getId());
-			em.remove(postagem);
+			colaborador = em.find(Colaborador.class, colaborador.getId());
+			em.remove(colaborador);
 			transaction.commit();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
@@ -60,11 +60,11 @@ public class PostagemDAO extends DAO {
 		}
 	}
 
-	public Postagem getByID(Long idPostagem) {
+	public Colaborador getByID(Long idColaborador) {
 		EntityManager em = getEntityManager();
-		Postagem resultado = null;
+		Colaborador resultado = null;
 		try {
-			resultado = em.find(Postagem.class, idPostagem);
+			resultado = em.find(Colaborador.class, idColaborador);
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
 		} finally {
@@ -74,11 +74,11 @@ public class PostagemDAO extends DAO {
 		return resultado;
 	}
 
-	public List<Postagem> getAll() {
+	public List<Colaborador> getAll() {
 		EntityManager em = getEntityManager();
-		List<Postagem> resultado = null;
+		List<Colaborador> resultado = null;
 		try {
-			TypedQuery<Postagem> query = em.createQuery("SELECT p FROM POSTAGEM_UNI p", Postagem.class);
+			TypedQuery<Colaborador> query = em.createQuery("SELECT c FROM COLABORADOR_BI c", Colaborador.class);
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();

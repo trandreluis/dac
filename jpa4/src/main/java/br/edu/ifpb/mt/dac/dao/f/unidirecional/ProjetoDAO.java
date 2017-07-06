@@ -1,4 +1,4 @@
-package br.edu.ifpb.mt.dac.dao.d.unidirecional;
+package br.edu.ifpb.mt.dac.dao.f.unidirecional;
 
 import java.util.List;
 
@@ -8,16 +8,16 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import br.edu.ifpb.mt.dac.dao.generic.DAO;
-import br.edu.ifpb.mt.dac.entidades.d.unidirecional.Postagem;
+import br.edu.ifpb.mt.dac.entidades.f.unidirecional.Projeto;
 
-public class PostagemDAO extends DAO {
+public class ProjetoDAO extends DAO {
 
-	public void save(Postagem postagem) {
+	public void save(Projeto projeto) {
 		EntityManager em = getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		try {
-			em.persist(postagem);
+			em.persist(projeto);
 			transaction.commit();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
@@ -27,13 +27,13 @@ public class PostagemDAO extends DAO {
 		}
 	}
 
-	public Postagem update(Postagem postagem) {
+	public Projeto update(Projeto projeto) {
 		EntityManager em = getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
-		Postagem resultado = postagem;
+		Projeto resultado = projeto;
 		try {
-			resultado = em.merge(postagem);
+			resultado = em.merge(projeto);
 			transaction.commit();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
@@ -44,13 +44,13 @@ public class PostagemDAO extends DAO {
 		return resultado;
 	}
 
-	public void delete(Postagem postagem) {
+	public void delete(Projeto projeto) {
 		EntityManager em = getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		try {
-			postagem = em.find(Postagem.class, postagem.getId());
-			em.remove(postagem);
+			projeto = em.find(Projeto.class, projeto.getId());
+			em.remove(projeto);
 			transaction.commit();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
@@ -60,11 +60,11 @@ public class PostagemDAO extends DAO {
 		}
 	}
 
-	public Postagem getByID(Long idPostagem) {
+	public Projeto getByID(Long idProjeto) {
 		EntityManager em = getEntityManager();
-		Postagem resultado = null;
+		Projeto resultado = null;
 		try {
-			resultado = em.find(Postagem.class, idPostagem);
+			resultado = em.find(Projeto.class, idProjeto);
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
 		} finally {
@@ -74,11 +74,11 @@ public class PostagemDAO extends DAO {
 		return resultado;
 	}
 
-	public List<Postagem> getAll() {
+	public List<Projeto> getAll() {
 		EntityManager em = getEntityManager();
-		List<Postagem> resultado = null;
+		List<Projeto> resultado = null;
 		try {
-			TypedQuery<Postagem> query = em.createQuery("SELECT p FROM POSTAGEM_UNI p", Postagem.class);
+			TypedQuery<Projeto> query = em.createQuery("SELECT p FROM PROJETO_UNI p", Projeto.class);
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();

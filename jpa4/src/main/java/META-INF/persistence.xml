@@ -28,6 +28,18 @@
 		<class>br.edu.ifpb.mt.dac.entidades.d.bidirecional.Postagem</class>
 		<class>br.edu.ifpb.mt.dac.entidades.d.bidirecional.Comentario</class>
 		
+		<class>br.edu.ifpb.mt.dac.entidades.e.Funcionario</class>
+		
+		<class>br.edu.ifpb.mt.dac.entidades.f.unidirecional.Colaborador</class>
+		<class>br.edu.ifpb.mt.dac.entidades.f.unidirecional.Projeto</class>
+		<class>br.edu.ifpb.mt.dac.entidades.f.bidirecional.Colaborador</class>
+		<class>br.edu.ifpb.mt.dac.entidades.f.bidirecional.Projeto</class>
+		
+		<class>br.edu.ifpb.mt.dac.entidades.g.unidirecional.Livro</class>
+		<class>br.edu.ifpb.mt.dac.entidades.g.unidirecional.Autor</class>
+		<class>br.edu.ifpb.mt.dac.entidades.g.bidirecional.Livro</class>
+		<class>br.edu.ifpb.mt.dac.entidades.g.bidirecional.Autor</class>
+		
 		<properties>
 
 			<!-- HIBERNATE -->

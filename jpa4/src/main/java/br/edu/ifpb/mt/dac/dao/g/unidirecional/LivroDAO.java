@@ -1,4 +1,4 @@
-package br.edu.ifpb.mt.dac.dao.d.unidirecional;
+package br.edu.ifpb.mt.dac.dao.g.unidirecional;
 
 import java.util.List;
 
@@ -8,16 +8,16 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import br.edu.ifpb.mt.dac.dao.generic.DAO;
-import br.edu.ifpb.mt.dac.entidades.d.unidirecional.Postagem;
+import br.edu.ifpb.mt.dac.entidades.g.unidirecional.Livro;
 
-public class PostagemDAO extends DAO {
+public class LivroDAO extends DAO {
 
-	public void save(Postagem postagem) {
+	public void save(Livro livro) {
 		EntityManager em = getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		try {
-			em.persist(postagem);
+			em.persist(livro);
 			transaction.commit();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
@@ -27,13 +27,13 @@ public class PostagemDAO extends DAO {
 		}
 	}
 
-	public Postagem update(Postagem postagem) {
+	public Livro update(Livro livro) {
 		EntityManager em = getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
-		Postagem resultado = postagem;
+		Livro resultado = livro;
 		try {
-			resultado = em.merge(postagem);
+			resultado = em.merge(livro);
 			transaction.commit();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
@@ -44,13 +44,13 @@ public class PostagemDAO extends DAO {
 		return resultado;
 	}
 
-	public void delete(Postagem postagem) {
+	public void delete(Livro livro) {
 		EntityManager em = getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		try {
-			postagem = em.find(Postagem.class, postagem.getId());
-			em.remove(postagem);
+			livro = em.find(Livro.class, livro.getId());
+			em.remove(livro);
 			transaction.commit();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
@@ -60,11 +60,11 @@ public class PostagemDAO extends DAO {
 		}
 	}
 
-	public Postagem getByID(Long idPostagem) {
+	public Livro getByID(Long idLivro) {
 		EntityManager em = getEntityManager();
-		Postagem resultado = null;
+		Livro resultado = null;
 		try {
-			resultado = em.find(Postagem.class, idPostagem);
+			resultado = em.find(Livro.class, idLivro);
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
 		} finally {
@@ -74,11 +74,11 @@ public class PostagemDAO extends DAO {
 		return resultado;
 	}
 
-	public List<Postagem> getAll() {
+	public List<Livro> getAll() {
 		EntityManager em = getEntityManager();
-		List<Postagem> resultado = null;
+		List<Livro> resultado = null;
 		try {
-			TypedQuery<Postagem> query = em.createQuery("SELECT p FROM POSTAGEM_UNI p", Postagem.class);
+			TypedQuery<Livro> query = em.createQuery("SELECT c FROM LIVRO_UNI c", Livro.class);
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
