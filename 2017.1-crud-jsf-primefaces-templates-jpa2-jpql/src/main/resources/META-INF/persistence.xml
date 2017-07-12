@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+	<persistence-unit name="daca" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<non-jta-data-source>jdbc/DACA</non-jta-data-source>
+
+		<class>br.edu.ifpb.mt.daca.entities.User</class>
+
+		<properties>
+			<!-- Configuração Hibernate SGBD MySQL -->
+			<!--
+			<property name="hibernate.default_catalog" value="DACA" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			-->
+			<!-- /Configuração Hibernate SGBD MySQL -->
+
+			<!-- Configuração Hibernate SGBD PostgreSQL -->
+			<property name="hibernate.default_schema" value="public" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<!-- /Configuração Hibernate SGBD PostgreSQL -->
+
+		</properties>
+	</persistence-unit>
+</persistence>
