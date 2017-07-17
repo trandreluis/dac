@@ -42,12 +42,12 @@ public class PesquisaGoogleTest {
 		driver.get(baseUrl);
 
 		WebElement campoDeTexto = driver.findElement(By.name("q"));
-		campoDeTexto.sendKeys("IFPB");
+		campoDeTexto.sendKeys("Como dominar o mundo?");
 		campoDeTexto.submit();
 
 		WebDriverWait wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.titleContains("IFPB"));
+		wait.until(ExpectedConditions.titleContains("Como dominar o mundo?"));
 
-		assertEquals("IFPB - Pesquisa Google", driver.getTitle());
+		assertEquals("Como dominar o mundo? - Pesquisa Google", driver.getTitle());
 	}
 }

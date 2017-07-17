@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+	<persistence-unit name="jpah" transaction-type="RESOURCE_LOCAL">
+
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<!-- TODO: Adicionar mapeamento das entidades abaixo -->
+		<class>br.edu.ifpb.mt.daca.entities.singleTablePerClassHierarchy.Projeto</class>
+		<class>br.edu.ifpb.mt.daca.entities.singleTablePerClassHierarchy.ProjetoGrande</class>
+		<class>br.edu.ifpb.mt.daca.entities.singleTablePerClassHierarchy.ProjetoPequeno</class>
+		<class>br.edu.ifpb.mt.daca.entities.tablePerConcreteClass.Empregado</class>
+		<class>br.edu.ifpb.mt.daca.entities.tablePerConcreteClass.EmpTempoIntegral</class>
+		<class>br.edu.ifpb.mt.daca.entities.tablePerConcreteClass.EmpTempoParcial</class>
+		<class>br.edu.ifpb.mt.daca.entities.joinedSubclass.Veiculo</class>
+		<class>br.edu.ifpb.mt.daca.entities.joinedSubclass.VeiculoDePassageiro</class>
+		<class>br.edu.ifpb.mt.daca.entities.joinedSubclass.VeiculoDeTransporte</class>
+		<class>br.edu.ifpb.mt.daca.entities.joinedSubclass.Carro</class>
+		<class>br.edu.ifpb.mt.daca.entities.joinedSubclass.Caminhao</class>
+		<class>br.edu.ifpb.mt.daca.entities.joinedSubclass.Bicicleta</class>
+		
+		<properties>
+			<!-- Configuração Hibernate SGBD MySQL -->
+			<!-- 
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/DACA?useSSL=false&amp;serverTimezone=GMT-3" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="123456" />
+			<property name="hibernate.default_catalog" value="DACA" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			-->
+			<!-- /Configuração Hibernate SGBD MySQL -->
+
+			<!-- Configuração Hibernate SGBD MySQL Create Database -->
+			
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/jpah?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true" />
+			<property name="hibernate.connection.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="root" />
+			<property name="hibernate.default_schema" value="daca" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			
+			<!-- /Configuração Hibernate SGBD MySQL Create Database -->
+
+			<!-- Configuração do Pool de conexões -->
+			<!-- DICA: checar conexões ativas no PostgreSQL: SELECT * FROM pg_stat_activity; -->
+			<!-- DICA: checar conexões ativas no MySQL: show processlist; -->
+			<!-- DICA: checar conexões ativas no Oracle: http://dbaforums.org/oracle/index.php?showtopic=16834 -->
+			<property name="hibernate.c3p0.min_size" value="5" />
+			<property name="hibernate.c3p0.max_size" value="20" />
+			<property name="hibernate.c3p0.timeout" value="3000" />
+			<property name="hibernate.c3p0.max_statements" value="50" />
+			<property name="hibernate.c3p0.idle_test_period" value="300" />
+			<!-- /Configuração do Pool de conexões -->
+
+		</properties>
+	</persistence-unit>
+</persistence>
